@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#0a0a0a">
 
 <!-- Security Headers -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: blob:; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; connect-src 'self' https://wa.me; frame-ancestors 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: blob:; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https://*.instagram.com https://*.fbcdn.net https://*.facebook.com; connect-src 'self' https://wa.me; frame-src https://www.instagram.com https://www.facebook.com https://web.facebook.com; frame-ancestors 'none';">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
@@ -670,6 +670,75 @@ section { padding: 6rem 0; }
 }
 .menu-cat-desc { font-size: 0.78rem; color: rgba(212,197,169,0.8); line-height: 1.6; }
 
+/* ─── VIDEOS ─── */
+#videos {
+  background: var(--negro);
+  background-image: radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.05) 0%, transparent 50%);
+  padding: 5rem 0;
+}
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.video-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,168,76,0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.video-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  border-color: rgba(201,168,76,0.35);
+}
+.video-card-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%; /* square for IG reels */
+  background: var(--negro2);
+}
+.video-card-embed iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+.video-card-embed.video-fb {
+  padding-bottom: 56.25%; /* 16:9 for FB */
+}
+.video-card-info {
+  padding: 1rem 1.2rem;
+}
+.video-card-title {
+  font-family: var(--font-heading);
+  color: var(--crema);
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+.video-card-platform {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: rgba(201,168,76,0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.video-card-platform .platform-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.video-card-platform .platform-dot.ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.video-card-platform .platform-dot.fb { background: #1877f2; }
+
+@media (max-width: 768px) {
+  .videos-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+}
+
 /* ─── EVENTOS ─── */
 #eventos {
   background: var(--negro);
@@ -1205,6 +1274,7 @@ img { user-select: none; -webkit-user-drag: none; }
     <li><a href="#historia">Nosotros</a></li>
     <li><a href="#show">El Show</a></li>
     <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#videos">Videos</a></li>
     <li><a href="#eventos">Eventos</a></li>
     <li><a href="#testimonios">Opiniones</a></li>
     <li><a href="#contacto">Contacto</a></li>
@@ -1399,6 +1469,26 @@ img { user-select: none; -webkit-user-drag: none; }
     </div>
     <div class="gallery-grid reveal stagger-parent" id="galeria-grid">
       <!-- Se genera automáticamente desde config.js -->
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos">
+  <div class="container-wide">
+    <div class="videos-header reveal" style="text-align:center; margin-bottom:3rem;">
+      <p class="section-eyebrow">✦ En Accion</p>
+      <h2 class="section-title">Miranos en <em>video</em></h2>
+      <div class="section-line" style="margin:0 auto 1.5rem;"></div>
+      <p class="section-desc" style="margin:0 auto; text-align:center; max-width:600px;">
+        El show de la pata flambeada hay que verlo en movimiento. Seguinos en nuestras redes para mas contenido.
+      </p>
+    </div>
+    <div class="videos-grid reveal stagger-parent" id="videos-grid">
+      <!-- Se genera automaticamente desde config.js -->
+    </div>
+    <div class="reveal" style="text-align:center; margin-top:2.5rem;">
+      <a href="https://www.instagram.com/richardehijos_pataflambeada" class="btn-primary" target="_blank" rel="noopener"><span>✦ Seguinos en Instagram</span></a>
     </div>
   </div>
 </section>
@@ -1728,7 +1818,7 @@ img { user-select: none; -webkit-user-drag: none; }
         <a href="#servicios">Servicios</a>
         <a href="#contacto">Contacto</a>
       </div>
-      <div class="footer-copy">© 2026 Richard e Hijos · Todos los derechos reservados</div>
+      <div class="footer-copy">© 2025 Richard e Hijos · Todos los derechos reservados</div>
     </div>
   </div>
 </footer>
@@ -1833,6 +1923,52 @@ document.querySelectorAll('.nav-links a').forEach(a => {
             + '</div>';
     });
     gGrid.innerHTML = html;
+  }
+
+  // ─── VIDEOS ───
+  const vGrid = document.getElementById('videos-grid');
+  const videoSection = document.getElementById('videos');
+  const videoNavLink = document.querySelector('a[href="#videos"]');
+  if (!C.videos || !C.videos.length) {
+    // Ocultar sección y link del nav si no hay videos
+    if (videoSection) videoSection.style.display = 'none';
+    if (videoNavLink) videoNavLink.parentElement.style.display = 'none';
+  }
+  if (vGrid && C.videos && C.videos.length) {
+    let html = '';
+    C.videos.forEach(function(video, i) {
+      var embedUrl = '';
+      var isFb = false;
+      var url = video.url || '';
+
+      // Instagram: extraer código del reel/post
+      if (url.includes('instagram.com')) {
+        // Soporta: /reel/CODE/, /p/CODE/, /reels/CODE/
+        var igMatch = url.match(/instagram\.com\/(?:reel|p|reels)\/([A-Za-z0-9_-]+)/);
+        if (igMatch) {
+          embedUrl = 'https://www.instagram.com/p/' + igMatch[1] + '/embed/';
+        }
+      }
+      // Facebook: embed via plugins
+      else if (url.includes('facebook.com') || url.includes('fb.watch')) {
+        isFb = true;
+        embedUrl = 'https://www.facebook.com/plugins/video.php?href=' + encodeURIComponent(url) + '&width=500&show_text=false';
+      }
+
+      if (embedUrl) {
+        var platformClass = isFb ? 'fb' : 'ig';
+        var platformName = isFb ? 'Facebook' : 'Instagram';
+        html += '<div class="video-card stagger-child">'
+              + '<div class="video-card-embed' + (isFb ? ' video-fb' : '') + '">'
+              + '<iframe src="' + embedUrl + '" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe>'
+              + '</div>'
+              + '<div class="video-card-info">'
+              + '<div class="video-card-title">' + (video.titulo || '') + '</div>'
+              + '<div class="video-card-platform"><span class="platform-dot ' + platformClass + '"></span> ' + platformName + '</div>'
+              + '</div></div>';
+      }
+    });
+    vGrid.innerHTML = html;
   }
 })();
 

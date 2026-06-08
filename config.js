@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════
-   CONFIGURACIÓN DE FOTOS — Richard e Hijos
+   CONFIGURACIÓN DE FOTOS Y VIDEOS — Richard e Hijos
    ══════════════════════════════════════════════════════════════
 
    Para cambiar una foto:
@@ -7,6 +7,12 @@
    2. Cambiá el nombre del archivo acá abajo
    3. Cambiá la descripción si querés
    4. Guardá este archivo y listo, se actualiza solo
+
+   Para agregar un video:
+   1. Copiá el link del video de Instagram o Facebook
+   2. Pegalo en la sección "videos" de abajo
+   3. Ponele un título
+   4. Guardá y listo
 
    ¡No hace falta tocar el HTML para nada!
    ══════════════════════════════════════════════════════════════ */
@@ -93,6 +99,22 @@ const CONFIG_FOTOS = {
     { archivo: "galeria-18.jpg", descripcion: "Ensalada de tomate con cebolla en fuente" },
     { archivo: "galeria-19.jpg", descripcion: "Camarones gourmet en copas de presentación" },
     { archivo: "galeria-20.jpg", descripcion: "Mozo sirviendo camarones a invitados del evento" },
+  ],
+
+  /* ─── VIDEOS DE REDES SOCIALES ───
+     Pegá el link del video de Instagram o Facebook y ponele un título.
+     Podés agregar o sacar videos libremente.
+
+     Ejemplos de links que funcionan:
+     - Instagram: https://www.instagram.com/reel/ABC123/
+     - Instagram: https://www.instagram.com/p/ABC123/
+     - Facebook:  https://www.facebook.com/usuario/videos/123456/
+     - Facebook:  https://fb.watch/ABC123/
+  */
+  videos: [
+    // ← Pegá tus videos acá. Ejemplo:
+    // { url: "https://www.instagram.com/reel/CODIGO-DEL-VIDEO/", titulo: "Show de fuego en casamiento" },
+    // { url: "https://www.facebook.com/ricardo.r.morales.5/videos/123456/", titulo: "Evento corporativo en Trelew" },
   ],
 
 };
