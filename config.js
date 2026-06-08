@@ -105,11 +105,13 @@ const CONFIG_FOTOS = {
      Pegá el link del video de Instagram o Facebook y ponele un título.
      Podés agregar o sacar videos libremente.
 
-     Ejemplos de links que funcionan:
-     - Instagram: https://www.instagram.com/reel/ABC123/
-     - Instagram: https://www.instagram.com/p/ABC123/
-     - Facebook:  https://www.facebook.com/usuario/videos/123456/
-     - Facebook:  https://fb.watch/ABC123/
+     Cada video tiene:
+     - url: el link al video (cualquier link de Instagram o Facebook)
+     - titulo: el texto que aparece debajo
+     - imagen: (OPCIONAL) nombre de una captura en la carpeta img/
+               Si no ponés imagen, se muestra un fondo con play
+
+     Al hacer clic se abre el video en la red social.
   */
   videos: [
     { url: "https://www.facebook.com/share/r/1Bp7XeoaXm/", titulo: "Show de pata flambeada en vivo" },

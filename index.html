@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#0a0a0a">
 
 <!-- Security Headers -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: blob:; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https://*.instagram.com https://*.fbcdn.net https://*.facebook.com; connect-src 'self' https://wa.me; frame-src https://www.instagram.com https://www.facebook.com https://web.facebook.com; frame-ancestors 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: blob:; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; connect-src 'self' https://wa.me; frame-ancestors 'none';">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
@@ -678,65 +678,113 @@ section { padding: 6rem 0; }
 }
 .videos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 .video-card {
+  display: block;
+  text-decoration: none;
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(201,168,76,0.12);
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  cursor: pointer;
 }
 .video-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 20px 50px rgba(0,0,0,0.5);
   border-color: rgba(201,168,76,0.35);
 }
-.video-card-embed {
+.video-card-thumb {
   position: relative;
   width: 100%;
-  padding-bottom: 100%; /* square for IG reels */
-  background: var(--negro2);
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 50%, #1a1206 100%);
 }
-.video-card-embed iframe {
+.video-card-thumb img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.7);
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+.video-card:hover .video-card-thumb img {
+  transform: scale(1.06);
+  filter: brightness(0.85);
+}
+/* Play button overlay */
+.video-card-play {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  border: none;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px; height: 70px;
+  background: rgba(201,168,76,0.85);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
 }
-.video-card-embed.video-fb {
-  padding-bottom: 56.25%; /* 16:9 for FB */
+.video-card:hover .video-card-play {
+  transform: translate(-50%, -50%) scale(1.12);
+  background: rgba(201,168,76,1);
 }
+.video-card-play::after {
+  content: '';
+  display: block;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 12px 0 12px 22px;
+  border-color: transparent transparent transparent #0a0a0a;
+  margin-left: 4px;
+}
+/* Animated ring around play */
+.video-card-play::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 2px solid rgba(201,168,76,0.4);
+  border-radius: 50%;
+  animation: playPulse 2s ease-in-out infinite;
+}
+@keyframes playPulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.15); opacity: 0; }
+}
+/* Platform icon in corner */
+.video-card-badge {
+  position: absolute;
+  top: 12px; right: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+.video-card-badge.fb { background: rgba(24,119,242,0.8); color: #fff; }
+.video-card-badge.ig { background: linear-gradient(45deg, rgba(240,148,51,0.9), rgba(220,39,67,0.9)); color: #fff; }
 .video-card-info {
   padding: 1rem 1.2rem;
 }
 .video-card-title {
   font-family: var(--font-heading);
   color: var(--crema);
-  font-size: 1rem;
+  font-size: 1.05rem;
   margin-bottom: 0.3rem;
 }
-.video-card-platform {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
+.video-card-cta {
   font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: rgba(201,168,76,0.7);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  color: var(--dorado);
+  opacity: 0.7;
+  transition: opacity 0.3s;
 }
-.video-card-platform .platform-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  display: inline-block;
-}
-.video-card-platform .platform-dot.ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-.video-card-platform .platform-dot.fb { background: #1877f2; }
+.video-card:hover .video-card-cta { opacity: 1; }
 
 @media (max-width: 768px) {
-  .videos-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .videos-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
 }
 
 /* ─── EVENTOS ─── */
@@ -1937,36 +1985,26 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   if (vGrid && C.videos && C.videos.length) {
     let html = '';
     C.videos.forEach(function(video, i) {
-      var embedUrl = '';
-      var isFb = false;
       var url = video.url || '';
+      var isFb = url.includes('facebook.com') || url.includes('fb.watch') || url.includes('fb.com');
+      var isIg = url.includes('instagram.com');
+      var platformClass = isFb ? 'fb' : 'ig';
+      var platformName = isFb ? 'Facebook' : 'Instagram';
+      var ctaText = isFb ? 'Ver en Facebook ➜' : 'Ver en Instagram ➜';
+      var thumbHtml = video.imagen
+        ? '<img src="img/' + video.imagen + '" alt="' + (video.titulo || '') + '">'
+        : '';
 
-      // Instagram: extraer código del reel/post
-      if (url.includes('instagram.com')) {
-        // Soporta: /reel/CODE/, /p/CODE/, /reels/CODE/
-        var igMatch = url.match(/instagram\.com\/(?:reel|p|reels)\/([A-Za-z0-9_-]+)/);
-        if (igMatch) {
-          embedUrl = 'https://www.instagram.com/p/' + igMatch[1] + '/embed/';
-        }
-      }
-      // Facebook: embed via plugins
-      else if (url.includes('facebook.com') || url.includes('fb.watch')) {
-        isFb = true;
-        embedUrl = 'https://www.facebook.com/plugins/video.php?href=' + encodeURIComponent(url) + '&width=500&show_text=false';
-      }
-
-      if (embedUrl) {
-        var platformClass = isFb ? 'fb' : 'ig';
-        var platformName = isFb ? 'Facebook' : 'Instagram';
-        html += '<div class="video-card stagger-child">'
-              + '<div class="video-card-embed' + (isFb ? ' video-fb' : '') + '">'
-              + '<iframe src="' + embedUrl + '" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe>'
-              + '</div>'
-              + '<div class="video-card-info">'
-              + '<div class="video-card-title">' + (video.titulo || '') + '</div>'
-              + '<div class="video-card-platform"><span class="platform-dot ' + platformClass + '"></span> ' + platformName + '</div>'
-              + '</div></div>';
-      }
+      html += '<a class="video-card stagger-child" href="' + url + '" target="_blank" rel="noopener">'
+            + '<div class="video-card-thumb">'
+            + thumbHtml
+            + '<div class="video-card-play"></div>'
+            + '<div class="video-card-badge ' + platformClass + '">' + platformName + '</div>'
+            + '</div>'
+            + '<div class="video-card-info">'
+            + '<div class="video-card-title">' + (video.titulo || '') + '</div>'
+            + '<div class="video-card-cta">' + ctaText + '</div>'
+            + '</div></a>';
     });
     vGrid.innerHTML = html;
   }
