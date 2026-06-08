@@ -9,6 +9,14 @@
 <meta name="author" content="Richard e Hijos - Ricardo Morales">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0a0a0a">
+
+<!-- Security Headers -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: blob:; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; connect-src 'self' https://wa.me; frame-ancestors 'none';">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
 <link rel="canonical" href="https://TU-USUARIO.github.io/">
 
 <!-- Open Graph / Facebook / WhatsApp -->
@@ -912,9 +920,177 @@ footer {
   .hero-stat-num { font-size: 1.3rem; }
   .section-title { font-size: 2rem; }
 }
+
+/* ═══ PRELOADER ═══ */
+.preloader {
+  position: fixed; inset: 0; z-index: 100000;
+  background: var(--negro);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), visibility 0.8s;
+}
+.preloader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+.preloader-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900;
+  color: var(--dorado); opacity: 0;
+  animation: plFadeIn 0.8s ease forwards 0.2s;
+}
+.preloader-tagline {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.6rem; letter-spacing: 0.5em; text-transform: uppercase;
+  color: var(--dorado2); margin-top: 0.6rem; opacity: 0;
+  animation: plFadeIn 0.6s ease forwards 0.5s;
+}
+.preloader-bar {
+  width: 140px; height: 2px; background: var(--negro3);
+  margin-top: 2rem; overflow: hidden; border-radius: 2px;
+}
+.preloader-bar-fill {
+  height: 100%; width: 0;
+  background: linear-gradient(90deg, var(--dorado), var(--rojo2), var(--dorado));
+  background-size: 200% 100%;
+  animation: plBar 2s cubic-bezier(0.4,0,0.2,1) forwards 0.3s, plBarShimmer 1.5s linear infinite;
+}
+@keyframes plFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes plBar { to { width: 100%; } }
+@keyframes plBarShimmer { to { background-position: -200% 0; } }
+body.loading { overflow: hidden; }
+
+/* ═══ ENHANCED NAV GLASS ═══ */
+nav.scrolled {
+  background: rgba(10,10,10,0.78) !important;
+  backdrop-filter: blur(24px) saturate(1.8) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(1.8) !important;
+  border-bottom: 1px solid rgba(201,168,76,0.1) !important;
+  padding-top: 0.55rem !important; padding-bottom: 0.55rem !important;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.35);
+}
+.nav-links a.active { color: var(--dorado) !important; }
+.nav-links a.active::after { transform: scaleX(1) !important; }
+
+/* ═══ FIRE EMBERS ═══ */
+.fire-particles { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+.ember {
+  position: absolute; border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,224,154,0.95), rgba(192,57,43,0.5));
+  opacity: 0; filter: blur(0.5px);
+  animation: emberRise linear infinite;
+}
+@keyframes emberRise {
+  0%   { opacity: 0; transform: translateY(0) translateX(0) scale(1) rotate(0deg); }
+  8%   { opacity: 0.85; }
+  75%  { opacity: 0.15; }
+  100% { opacity: 0; transform: translateY(-105vh) translateX(var(--drift, 30px)) scale(0.15) rotate(720deg); }
+}
+
+/* ═══ HERO VIGNETTE ═══ */
+.hero-vignette {
+  position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(ellipse at center, transparent 25%, rgba(10,10,10,0.6) 100%);
+  pointer-events: none;
+}
+
+/* ═══ BACK TO TOP ═══ */
+.btt {
+  position: fixed; bottom: 2rem; left: 2rem; z-index: 900;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: rgba(10,10,10,0.75); border: 1px solid rgba(201,168,76,0.2);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; opacity: 0; transform: translateY(20px) scale(0.85);
+  transition: all 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.btt.show { opacity: 1; transform: translateY(0) scale(1); }
+.btt:hover {
+  background: var(--dorado); border-color: var(--dorado);
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 8px 28px rgba(201,168,76,0.35);
+}
+.btt:hover svg.btt-icon path { stroke: var(--negro); }
+.btt svg.btt-icon { width: 18px; height: 18px; position: relative; z-index: 2; }
+.btt svg.btt-icon path { stroke: var(--dorado); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.3s; }
+.btt-ring { position: absolute; inset: -3px; width: 52px; height: 52px; }
+.btt-ring circle { fill: none; stroke-width: 2; stroke-linecap: round; }
+.btt-ring .track { stroke: rgba(201,168,76,0.08); }
+.btt-ring .prog { stroke: var(--dorado); transform: rotate(-90deg); transform-origin: center; transition: stroke-dashoffset 0.12s; }
+
+/* ═══ SHIMMER ON GOLD LINES ═══ */
+.section-line { position: relative; overflow: hidden; }
+.section-line::after {
+  content: ''; position: absolute; top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  animation: lineShimmer 4s ease-in-out infinite;
+}
+@keyframes lineShimmer { 0% { left: -100%; } 50%,100% { left: 250%; } }
+
+/* ═══ CARD MOUSE GLOW ═══ */
+.card-glow { position: relative; }
+.card-glow::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(350px circle at var(--mx,50%) var(--my,50%), rgba(201,168,76,0.06) 0%, transparent 65%);
+  opacity: 0; transition: opacity 0.45s; pointer-events: none; z-index: 1;
+}
+.card-glow:hover::after { opacity: 1; }
+
+/* ═══ SCALE REVEAL ═══ */
+.reveal-scale {
+  opacity: 0; transform: scale(0.92);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+/* ═══ ENHANCED GALLERY SHIMMER ═══ */
+.gallery-item::before {
+  content: ''; position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, transparent 50%);
+  opacity: 0; transition: opacity 0.5s; pointer-events: none;
+}
+.gallery-item:hover::before { opacity: 1; }
+
+/* ═══ ENHANCED IMAGE FRAME ═══ */
+.historia-img-frame::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(10,10,10,0.35) 100%);
+  opacity: 0; transition: opacity 0.5s; pointer-events: none; z-index: 1;
+}
+.historia-img-frame:hover::after { opacity: 0.8; }
+
+/* ═══ SECURITY: IMAGE PROTECTION ═══ */
+img { user-select: none; -webkit-user-drag: none; }
+
+/* ═══ SECURITY TOAST ═══ */
+.security-toast {
+  position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(0.9);
+  background: rgba(10,10,10,0.95); color: var(--dorado);
+  padding: 1.2rem 2.8rem; font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem; letter-spacing: 0.15em; z-index: 100001;
+  border: 1px solid rgba(201,168,76,0.25);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
+  white-space: nowrap;
+}
+.security-toast.show { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+
+/* ═══ ENHANCED SCROLLBAR ═══ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, var(--dorado), var(--rojo2)); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--dorado2); }
 </style>
 </head>
-<body>
+<body class="loading">
+
+<!-- PRELOADER -->
+<div class="preloader" id="preloader">
+  <div class="preloader-brand">Richard e Hijos</div>
+  <div class="preloader-tagline">Pata Flambeada · Catering</div>
+  <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+</div>
 
 <!-- Scroll progress -->
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -944,6 +1120,8 @@ footer {
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-overlay2"></div>
+  <div class="fire-particles" id="fireParticles"></div>
+  <div class="hero-vignette"></div>
   <div class="hero-content">
     <h1 class="hero-title">
       <span class="gold">Pata</span><br>
@@ -1404,6 +1582,15 @@ footer {
   </div>
 </footer>
 
+<!-- BACK TO TOP -->
+<div class="btt" id="backToTop" title="Volver arriba">
+  <svg class="btt-ring" viewBox="0 0 52 52">
+    <circle class="track" cx="26" cy="26" r="22"/>
+    <circle class="prog" cx="26" cy="26" r="22"/>
+  </svg>
+  <svg class="btt-icon" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</div>
+
 <!-- WHATSAPP FLOAT -->
 <a href="https://wa.me/5492804571137?text=Hola%20Ricardo%2C%20quiero%20consultar%20sobre%20su%20servicio%20de%20catering%20para%20un%20evento." class="wa-float" target="_blank" title="Contactar por WhatsApp">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
@@ -1615,6 +1802,160 @@ const counterObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 });
 statNums.forEach(s => counterObserver.observe(s));
+
+// ─── PRELOADER ───
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const pl = document.getElementById('preloader');
+    if (pl) pl.classList.add('done');
+    document.body.classList.remove('loading');
+  }, 2500);
+});
+
+// ─── FIRE PARTICLES ───
+(function() {
+  const container = document.getElementById('fireParticles');
+  if (!container) return;
+  for (let i = 0; i < 30; i++) {
+    const ember = document.createElement('div');
+    ember.className = 'ember';
+    const size = Math.random() * 4 + 1.5;
+    const left = Math.random() * 100;
+    const delay = Math.random() * 10;
+    const duration = Math.random() * 7 + 5;
+    const drift = (Math.random() - 0.5) * 100;
+    ember.style.cssText = 'width:'+size+'px;height:'+size+'px;left:'+left+'%;bottom:-10px;animation-delay:'+delay+'s;animation-duration:'+duration+'s;--drift:'+drift+'px;';
+    container.appendChild(ember);
+  }
+})();
+
+// ─── BACK TO TOP ───
+(function() {
+  const btt = document.getElementById('backToTop');
+  if (!btt) return;
+  const prog = btt.querySelector('.prog');
+  const circumference = 2 * Math.PI * 22;
+  if (prog) {
+    prog.style.strokeDasharray = circumference;
+    prog.style.strokeDashoffset = circumference;
+  }
+  function updateBtt() {
+    const h = document.documentElement;
+    const pct = h.scrollTop / (h.scrollHeight - h.clientHeight);
+    btt.classList.toggle('show', window.scrollY > 500);
+    if (prog) prog.style.strokeDashoffset = circumference - (pct * circumference);
+  }
+  window.addEventListener('scroll', updateBtt, { passive: true });
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+})();
+
+// ─── NAV ACTIVE SECTION ───
+(function() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { threshold: 0.25, rootMargin: '-80px 0px -45% 0px' });
+  sections.forEach(s => sObs.observe(s));
+})();
+
+// ─── CARD MOUSE GLOW ───
+document.querySelectorAll('.evento-item, .show-step, .menu-cat, .contacto-item, .zonas-list li').forEach(card => {
+  card.classList.add('card-glow');
+  card.addEventListener('mousemove', function(e) {
+    const rect = this.getBoundingClientRect();
+    this.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+    this.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+  });
+});
+
+// ─── REVEAL-SCALE OBSERVER ───
+document.querySelectorAll('.reveal-scale').forEach(el => {
+  observer.observe(el);
+});
+
+// ─── SMOOTH NAV SHRINK ───
+(function() {
+  const logo = document.querySelector('.nav-logo');
+  if (!logo) return;
+  window.addEventListener('scroll', () => {
+    const shrink = window.scrollY > 100;
+    logo.style.transition = 'font-size 0.4s ease';
+    logo.style.fontSize = shrink ? '0.95rem' : '';
+  }, { passive: true });
+})();
+
+// ═══════════════════════════════════
+// ═══  SECURITY LAYER  ═══════════
+// ═══════════════════════════════════
+
+// Security toast helper
+function showSecurityToast(msg) {
+  let toast = document.getElementById('secToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'secToast';
+    toast.className = 'security-toast';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = '🔒 ' + msg;
+  toast.classList.add('show');
+  clearTimeout(toast._timer);
+  toast._timer = setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+// Disable right-click context menu
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+  showSecurityToast('Contenido protegido — Richard e Hijos');
+});
+
+// Disable image dragging
+document.querySelectorAll('img').forEach(function(img) {
+  img.addEventListener('dragstart', function(e) { e.preventDefault(); });
+  img.setAttribute('draggable', 'false');
+});
+
+// Block common DevTools shortcuts
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'F12') { e.preventDefault(); showSecurityToast('Acción no permitida'); return; }
+  if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
+    e.preventDefault(); showSecurityToast('Acción no permitida'); return;
+  }
+  if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+    e.preventDefault(); showSecurityToast('Código fuente protegido'); return;
+  }
+  if (e.ctrlKey && (e.key === 's' || e.key === 'S')) {
+    e.preventDefault(); showSecurityToast('Descarga no permitida'); return;
+  }
+});
+
+// Protect long text selections from copy
+document.addEventListener('copy', function(e) {
+  var sel = window.getSelection().toString();
+  if (sel.length > 80) {
+    e.clipboardData.setData('text/plain', 'Contenido protegido © Richard e Hijos — richardehijos.com');
+    e.preventDefault();
+  }
+});
+
+// Console warning
+console.log('%c⚠️ ATENCIÓN', 'color:#c0392b;font-size:28px;font-weight:900;text-shadow:1px 1px 0 #000;');
+console.log('%cEste es un recurso del navegador destinado a desarrolladores.%c\nSi alguien te indicó que copies y pegues algo aquí, es muy probable que sea una estafa.\n\n🔒 Richard e Hijos — Contenido Protegido', 'color:#c9a84c;font-size:13px;font-weight:bold;', 'color:#888;font-size:12px;');
+
+// Disable print screen (best-effort)
+document.addEventListener('keyup', function(e) {
+  if (e.key === 'PrintScreen') {
+    showSecurityToast('Captura no permitida');
+  }
+});
 </script>
 </body>
 </html>
