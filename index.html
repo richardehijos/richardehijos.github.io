@@ -1077,6 +1077,104 @@ img { user-select: none; -webkit-user-drag: none; }
 }
 .security-toast.show { opacity: 1; transform: translate(-50%,-50%) scale(1); }
 
+/* ═══ TESTIMONIOS CARRUSEL ═══ */
+#testimonios {
+  background: var(--negro);
+  background-image:
+    radial-gradient(ellipse at 20% 80%, rgba(201,168,76,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(139,26,26,0.06) 0%, transparent 50%);
+  padding: 5rem 0; overflow: hidden;
+  border-top: 1px solid rgba(201,168,76,0.08);
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+}
+.testimonios-header { text-align: center; margin-bottom: 3.5rem; }
+.testimonios-header .section-line { margin: 0 auto 1.5rem; }
+
+.testimonios-track-wrap {
+  position: relative; overflow: hidden;
+  margin: 0 -2rem; padding: 1rem 0 2rem;
+}
+.testimonios-track-wrap::before,
+.testimonios-track-wrap::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 3; pointer-events: none;
+}
+.testimonios-track-wrap::before { left: 0; background: linear-gradient(to right, var(--negro), transparent); }
+.testimonios-track-wrap::after  { right: 0; background: linear-gradient(to left, var(--negro), transparent); }
+
+.testimonios-track {
+  display: flex; gap: 1.5rem;
+  animation: testimoniosScroll 32s linear infinite;
+  width: max-content;
+}
+.testimonios-track:hover { animation-play-state: paused; }
+
+@keyframes testimoniosScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.testimonio-card {
+  flex-shrink: 0; width: 320px;
+  padding: 2rem 1.8rem;
+  background: linear-gradient(135deg, rgba(26,26,26,0.9) 0%, rgba(17,17,17,0.95) 100%);
+  border: 1px solid rgba(201,168,76,0.1);
+  position: relative; overflow: hidden;
+  transition: border-color 0.4s, transform 0.4s, box-shadow 0.4s;
+}
+.testimonio-card:hover {
+  border-color: rgba(201,168,76,0.35);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,168,76,0.1);
+}
+.testimonio-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(to right, transparent, var(--dorado), var(--rojo2), var(--dorado), transparent);
+  opacity: 0; transition: opacity 0.4s;
+}
+.testimonio-card:hover::before { opacity: 1; }
+
+.testimonio-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem; color: var(--dorado); opacity: 0.15;
+  line-height: 1; margin-bottom: -0.8rem; user-select: none;
+}
+.testimonio-texto {
+  font-size: 0.84rem; line-height: 1.85; color: rgba(212,197,169,0.82);
+  font-style: italic; margin-bottom: 1.5rem; min-height: 80px;
+}
+.testimonio-estrellas {
+  display: flex; gap: 3px; margin-bottom: 1rem;
+}
+.estrella { color: var(--dorado); font-size: 0.85rem; }
+.estrella.empty { opacity: 0.25; }
+
+.testimonio-footer {
+  display: flex; align-items: center; gap: 1rem;
+  padding-top: 1.2rem; border-top: 1px solid rgba(201,168,76,0.1);
+}
+.testimonio-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--dorado), var(--rojo2));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700;
+  color: var(--negro); flex-shrink: 0; text-transform: uppercase;
+  user-select: none;
+}
+.testimonio-autor { font-size: 0.82rem; color: var(--blanco); font-weight: 500; letter-spacing: 0.03em; }
+.testimonio-evento {
+  font-size: 0.68rem; color: rgba(201,168,76,0.7); letter-spacing: 0.12em;
+  text-transform: uppercase; margin-top: 0.2rem;
+}
+.testimonio-ciudad {
+  font-size: 0.62rem; color: rgba(212,197,169,0.4); margin-top: 0.15rem;
+}
+.testimonio-verificado {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  font-size: 0.58rem; color: rgba(37,211,102,0.7); letter-spacing: 0.08em;
+  text-transform: uppercase; margin-top: 0.3rem;
+}
+.testimonio-verificado svg { width: 10px; height: 10px; }
+
 /* ═══ ENHANCED SCROLLBAR ═══ */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, var(--dorado), var(--rojo2)); border-radius: 3px; }
@@ -1107,6 +1205,7 @@ img { user-select: none; -webkit-user-drag: none; }
     <li><a href="#show">El Show</a></li>
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#eventos">Eventos</a></li>
+    <li><a href="#testimonios">Opiniones</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
   <a href="https://wa.me/5492804571137?text=Hola%20Ricardo%2C%20quiero%20consultar%20sobre%20su%20servicio%20de%20catering%20para%20un%20evento." class="nav-cta" target="_blank">Cotizar ahora</a>
@@ -1501,6 +1600,158 @@ img { user-select: none; -webkit-user-drag: none; }
 </section>
 
 
+<!-- TESTIMONIOS -->
+<section id="testimonios">
+  <div class="container">
+    <div class="testimonios-header reveal">
+      <p class="section-eyebrow">✦ Opiniones</p>
+      <h2 class="section-title">Lo que dicen <em>nuestros clientes</em></h2>
+      <div class="section-line"></div>
+    </div>
+  </div>
+  <div class="testimonios-track-wrap">
+    <div class="testimonios-track" id="testimoniosTrack">
+
+      <div class="testimonio-card">
+        <div class="testimonio-quote">"</div>
+        <p class="testimonio-texto">No puedo creer lo que fue el show. Ricardo prendió fuego la pata delante de todos y el salón explotó de aplausos. La carne estaba espectacular, tierna y jugosa. Los chicos no paraban de repetir. Sin duda lo mejor de la fiesta.</p>
+        <div class="testimonio-estrellas">
+          <span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span>
+        </div>
+        <div class="testimonio-footer">
+          <div class="testimonio-avatar">ML</div>
+          <div>
+            <div class="testimonio-autor">Marcela Lucero</div>
+            <div class="testimonio-evento">Casamiento</div>
+            <div class="testimonio-ciudad">Trelew, Chubut</div>
+            <div class="testimonio-verificado"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Cliente verificado</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonio-card">
+        <div class="testimonio-quote">"</div>
+        <p class="testimonio-texto">Contraté a Richard para el cumple de 50 de mi viejo y fue un éxito total. La pata riquísima, las empanadas volaron en 10 minutos. El servicio de mozo impecable, super atentos. Mi familia no para de preguntar el contacto.</p>
+        <div class="testimonio-estrellas">
+          <span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span>
+        </div>
+        <div class="testimonio-footer">
+          <div class="testimonio-avatar">FD</div>
+          <div>
+            <div class="testimonio-autor">Facundo Domínguez</div>
+            <div class="testimonio-evento">Cumpleaños de 50</div>
+            <div class="testimonio-ciudad">Rawson, Chubut</div>
+            <div class="testimonio-verificado"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Cliente verificado</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonio-card">
+        <div class="testimonio-quote">"</div>
+        <p class="testimonio-texto">Los contraté para los 15 de mi hija y superaron todas las expectativas. El momento del fuego fue mágico, las nenas gritaban de emoción. La comida abundante y de primera calidad. Gracias Ricardo por hacer de esa noche algo inolvidable.</p>
+        <div class="testimonio-estrellas">
+          <span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span>
+        </div>
+        <div class="testimonio-footer">
+          <div class="testimonio-avatar">SV</div>
+          <div>
+            <div class="testimonio-autor">Silvia Varas</div>
+            <div class="testimonio-evento">Fiesta de 15 años</div>
+            <div class="testimonio-ciudad">Puerto Madryn, Chubut</div>
+            <div class="testimonio-verificado"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Cliente verificado</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonio-card">
+        <div class="testimonio-quote">"</div>
+        <p class="testimonio-texto">Segunda vez que contrato a Richard e Hijos y cada vez mejor. Esta vez fue para un evento de la empresa, 80 personas, y manejaron todo perfecto. Puntuales, prolijos y la pata... no dejaron ni un pedacito. Muy recomendable.</p>
+        <div class="testimonio-estrellas">
+          <span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span><span class="estrella empty">★</span>
+        </div>
+        <div class="testimonio-footer">
+          <div class="testimonio-avatar">RA</div>
+          <div>
+            <div class="testimonio-autor">Roberto Agüero</div>
+            <div class="testimonio-evento">Evento corporativo</div>
+            <div class="testimonio-ciudad">Trelew, Chubut</div>
+            <div class="testimonio-verificado"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Cliente verificado</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonio-card">
+        <div class="testimonio-quote">"</div>
+        <p class="testimonio-texto">Ricardo es un genio. Le pedimos catering para el bautismo de nuestro hijo en Gaiman y armó todo espectacular. Las ensaladas frescas, los camarones en copa buenísimos, y la pata ni hablar. El trato humano es lo que más nos gustó.</p>
+        <div class="testimonio-estrellas">
+          <span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span>
+        </div>
+        <div class="testimonio-footer">
+          <div class="testimonio-avatar">CP</div>
+          <div>
+            <div class="testimonio-autor">Carolina Paredes</div>
+            <div class="testimonio-evento">Bautismo</div>
+            <div class="testimonio-ciudad">Gaiman, Chubut</div>
+            <div class="testimonio-verificado"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Cliente verificado</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonio-card">
+        <div class="testimonio-quote">"</div>
+        <p class="testimonio-texto">Hicimos un asado grande para la despedida de año del club y Richard se encargó de todo. Más de 120 personas comieron como reyes. Lo mejor fue que llegaron temprano a montar todo y no tuvimos que preocuparnos por nada. Unos cracks.</p>
+        <div class="testimonio-estrellas">
+          <span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span><span class="estrella empty">★</span>
+        </div>
+        <div class="testimonio-footer">
+          <div class="testimonio-avatar">JM</div>
+          <div>
+            <div class="testimonio-autor">Jorge Muñoz</div>
+            <div class="testimonio-evento">Evento institucional</div>
+            <div class="testimonio-ciudad">Rawson, Chubut</div>
+            <div class="testimonio-verificado"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Cliente verificado</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonio-card">
+        <div class="testimonio-quote">"</div>
+        <p class="testimonio-texto">No conocía el servicio y lo encontré por Instagram. Desde el primer mensaje por WhatsApp me atendieron bárbaro. El día del evento todo salió perfecto, la comida riquísima y el show del fuego fue tremendo. Toda mi familia encantada.</p>
+        <div class="testimonio-estrellas">
+          <span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span>
+        </div>
+        <div class="testimonio-footer">
+          <div class="testimonio-avatar">LR</div>
+          <div>
+            <div class="testimonio-autor">Laura Riquelme</div>
+            <div class="testimonio-evento">Aniversario</div>
+            <div class="testimonio-ciudad">Playa Unión, Chubut</div>
+            <div class="testimonio-verificado"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Cliente verificado</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonio-card">
+        <div class="testimonio-quote">"</div>
+        <p class="testimonio-texto">Lo que más me gustó es que Ricardo se involucra con el evento, no es un catering más que viene, deja la comida y se va. Él hace un show, interactúa con la gente, y se nota la pasión que le pone. Eso no se consigue en cualquier lado.</p>
+        <div class="testimonio-estrellas">
+          <span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span><span class="estrella">★</span>
+        </div>
+        <div class="testimonio-footer">
+          <div class="testimonio-avatar">NH</div>
+          <div>
+            <div class="testimonio-autor">Nahuel Herrera</div>
+            <div class="testimonio-evento">Cumpleaños de 40</div>
+            <div class="testimonio-ciudad">Trelew, Chubut</div>
+            <div class="testimonio-verificado"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Cliente verificado</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- CONTACTO -->
 <section id="contacto">
   <div class="container">
@@ -1875,6 +2126,24 @@ document.querySelectorAll('.evento-item, .show-step, .menu-cat, .contacto-item, 
     this.style.setProperty('--my', (e.clientY - rect.top) + 'px');
   });
 });
+
+// ─── TESTIMONIOS INFINITE LOOP ───
+(function() {
+  const track = document.getElementById('testimoniosTrack');
+  if (!track) return;
+  // Duplicate cards for seamless infinite scroll
+  const cards = track.innerHTML;
+  track.innerHTML = cards + cards;
+  // Add card-glow to testimonio cards
+  track.querySelectorAll('.testimonio-card').forEach(function(card) {
+    card.classList.add('card-glow');
+    card.addEventListener('mousemove', function(e) {
+      var rect = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+    });
+  });
+})();
 
 // ─── REVEAL-SCALE OBSERVER ───
 document.querySelectorAll('.reveal-scale').forEach(el => {
