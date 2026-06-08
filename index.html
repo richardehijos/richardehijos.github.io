@@ -233,7 +233,7 @@ nav.scrolled { background: rgba(10,10,10,0.98); border-bottom: 1px solid rgba(20
 
 .hero-bg {
   position: absolute; inset: 0;
-  background-image: url('img/galeria-16.jpg');
+  background-image: url('img/galeria-16.jpg'); /* fallback, se reemplaza desde config.js */
   background-size: cover; background-position: center 30%;
   transform: scale(1.05);
   animation: heroZoom 8s ease-out forwards;
@@ -1180,6 +1180,7 @@ img { user-select: none; -webkit-user-drag: none; }
 ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, var(--dorado), var(--rojo2)); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--dorado2); }
 </style>
+<script src="config.js"></script>
 </head>
 <body class="loading">
 
@@ -1263,7 +1264,7 @@ img { user-select: none; -webkit-user-drag: none; }
     <div class="historia-grid">
       <div class="historia-img-wrap reveal-left">
         <div class="historia-img-frame">
-          <img src="img/historia-0.png" alt="Ricardo Morales - Chef y fundador de Richard e Hijos Pata Flambeada" loading="lazy">
+          <img id="img-historia" src="" alt="" loading="lazy">
           <div class="historia-img-deco"></div>
         </div>
         <div class="historia-img-badge">
@@ -1356,38 +1357,7 @@ img { user-select: none; -webkit-user-drag: none; }
       <div class="reveal-right">
         <div class="carousel-wrap" id="carousel1">
           <div class="carousel-track" id="track1">
-            <div class="carousel-slide" onclick="openLightbox(0)">
-              <img src="img/show-1.jpg" alt="Show de pata flambeada - fuego y espectáculo">
-              <div class="carousel-caption">El show en su máxima expresión 🔥</div>
-            </div>
-            <div class="carousel-slide" onclick="openLightbox(1)">
-              <img src="img/show-2.jpg" alt="Pata flambeada en llamas con Ricardo Morales">
-              <div class="carousel-caption">Fuego, sabor y pasión en cada evento</div>
-            </div>
-            <div class="carousel-slide" onclick="openLightbox(2)">
-              <img src="img/show-3.jpg" alt="Ricardo Morales presentando la pata flambeada">
-              <div class="carousel-caption">La presentación que todos esperan</div>
-            </div>
-            <div class="carousel-slide" onclick="openLightbox(3)">
-              <img src="img/show-4.jpg" alt="Show de fuego catering evento Chubut">
-              <div class="carousel-caption">Pirotecnia y fuego para tu celebración</div>
-            </div>
-            <div class="carousel-slide" onclick="openLightbox(4)">
-              <img src="img/show-5.jpg" alt="Catering con show en evento de Rawson Trelew">
-              <div class="carousel-caption">Cada evento, único e irrepetible</div>
-            </div>
-            <div class="carousel-slide" onclick="openLightbox(5)">
-              <img src="img/show-6.jpg" alt="Pata flambeada servida en bandejas con aluminio">
-              <div class="carousel-caption">El flambeado ideal para tu festejo</div>
-            </div>
-            <div class="carousel-slide" onclick="openLightbox(6)">
-              <img src="img/show-7.jpg" alt="Show de catering Rawson Chubut Richard e Hijos">
-              <div class="carousel-caption">Momentos que se guardan para siempre</div>
-            </div>
-            <div class="carousel-slide" onclick="openLightbox(7)">
-              <img src="img/show-8.jpg" alt="Flambeo de pata en evento familiar">
-              <div class="carousel-caption">El fuego que da inicio a la celebración</div>
-            </div>
+            <!-- Se genera automáticamente desde config.js -->
           </div>
           <div class="carousel-arrows">
             <button class="arrow-btn" onclick="prevSlide()">&#8592;</button>
@@ -1408,55 +1378,8 @@ img { user-select: none; -webkit-user-drag: none; }
       <h2 class="section-title">Lo que llevamos<br><em>a tu evento</em></h2>
       <div class="section-line" style="margin:0 auto;"></div>
     </div>
-    <div class="menu-categories reveal stagger-parent">
-      <div class="menu-cat stagger-child" onclick="openLightboxGallery(0)">
-        <img src="img/galeria-9.jpg" alt="Ensaladas frescas preparadas para el evento">
-        <div class="menu-cat-overlay">
-          <div class="menu-cat-icon">🥗</div>
-          <div class="menu-cat-title">Ensaladas Frescas</div>
-          <div class="menu-cat-desc">Lechuga con tomate, zanahoria rallada con choclo y más variedades. Preparadas el mismo día para máxima frescura.</div>
-        </div>
-      </div>
-      <div class="menu-cat stagger-child" onclick="openLightboxGallery(1)">
-        <img src="img/galeria-10.jpg" alt="Empanadas artesanales para catering de eventos">
-        <div class="menu-cat-overlay">
-          <div class="menu-cat-icon">🥟</div>
-          <div class="menu-cat-title">Empanadas Artesanales</div>
-          <div class="menu-cat-desc">Elaboradas a mano con rellenos tradicionales. Perfectas para el aperitivo o como acompañamiento principal.</div>
-        </div>
-      </div>
-      <div class="menu-cat stagger-child" onclick="openLightboxGallery(2)">
-        <img src="img/galeria-19.jpg" alt="Camarones en copas para eventos especiales">
-        <div class="menu-cat-overlay">
-          <div class="menu-cat-icon">🦐</div>
-          <div class="menu-cat-title">Entradas Gourmet</div>
-          <div class="menu-cat-desc">Camarones en copa con limón, creps, y opciones a elección del cliente. Presentación impecable para sorprender a tus invitados.</div>
-        </div>
-      </div>
-      <div class="menu-cat stagger-child" onclick="openLightboxGallery(3)">
-        <img src="img/galeria-12.jpg" alt="Matambre arrollado de pollo o carne servido en platos">
-        <div class="menu-cat-overlay">
-          <div class="menu-cat-icon">🍖</div>
-          <div class="menu-cat-title">Matambre Arrollado</div>
-          <div class="menu-cat-desc">De pollo o de carne, relleno y cocinado con esmero. Servido en platos individuales para cada invitado.</div>
-        </div>
-      </div>
-      <div class="menu-cat stagger-child" onclick="openLightboxGallery(4)">
-        <img src="img/galeria-13.jpg" alt="Mesa de servicio completa con panes y acompañamientos">
-        <div class="menu-cat-overlay">
-          <div class="menu-cat-icon">🍞</div>
-          <div class="menu-cat-title">Mesa Completa</div>
-          <div class="menu-cat-desc">Panes, salsas, aderezos, vajilla y cristalería. Todo montado y presentado para que tu evento luzca de primera.</div>
-        </div>
-      </div>
-      <div class="menu-cat stagger-child" onclick="openLightboxGallery(5)">
-        <img src="img/galeria-20.jpg" alt="Servicio de mozo para eventos con Richard e Hijos">
-        <div class="menu-cat-overlay">
-          <div class="menu-cat-icon">🍽️</div>
-          <div class="menu-cat-title">Servicio de Mozo</div>
-          <div class="menu-cat-desc">Personal de servicio vestido de negro, profesional y atento. La atención a los invitados que se merece tu evento.</div>
-        </div>
-      </div>
+    <div class="menu-categories reveal stagger-parent" id="servicios-grid">
+      <!-- Se genera automáticamente desde config.js -->
     </div>
     <div class="reveal" style="text-align:center; margin-top:2rem;">
       <p class="section-desc" style="max-width:680px;margin:0 auto 2rem;">
@@ -1474,31 +1397,8 @@ img { user-select: none; -webkit-user-drag: none; }
       <p class="section-eyebrow">✦ Galería</p>
       <h2 class="section-title">El sabor en <em>imágenes</em></h2>
     </div>
-    <div class="gallery-grid reveal stagger-parent">
-      <div class="gallery-item stagger-child" onclick="openLightboxAll(0)">
-        <img src="img/galeria-15.jpg" alt="Show de pata flambeada con fuego y show">
-        <div class="gallery-item-overlay"><div class="gallery-zoom">⊕</div></div>
-      </div>
-      <div class="gallery-item stagger-child" onclick="openLightboxAll(1)">
-        <img src="img/galeria-16.jpg" alt="Ricardo Morales flambeando pata evento">
-        <div class="gallery-item-overlay"><div class="gallery-zoom">⊕</div></div>
-      </div>
-      <div class="gallery-item stagger-child" onclick="openLightboxAll(2)">
-        <img src="img/galeria-17.jpg" alt="Mesa completa de servicio con ensaladas y panes">
-        <div class="gallery-item-overlay"><div class="gallery-zoom">⊕</div></div>
-      </div>
-      <div class="gallery-item stagger-child" onclick="openLightboxAll(3)">
-        <img src="img/galeria-18.jpg" alt="Ensalada de tomate con cebolla en fuente">
-        <div class="gallery-item-overlay"><div class="gallery-zoom">⊕</div></div>
-      </div>
-      <div class="gallery-item stagger-child" onclick="openLightboxAll(4)">
-        <img src="img/galeria-19.jpg" alt="Camarones gourmet en copas de presentación">
-        <div class="gallery-item-overlay"><div class="gallery-zoom">⊕</div></div>
-      </div>
-      <div class="gallery-item stagger-child" onclick="openLightboxAll(5)">
-        <img src="img/galeria-20.jpg" alt="Mozo sirviendo camarones a invitados del evento">
-        <div class="gallery-item-overlay"><div class="gallery-zoom">⊕</div></div>
-      </div>
+    <div class="gallery-grid reveal stagger-parent" id="galeria-grid">
+      <!-- Se genera automáticamente desde config.js -->
     </div>
   </div>
 </section>
@@ -1870,10 +1770,76 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
 });
 
+// ═══════════════════════════════════════════════════════════
+// ═══  GENERAR FOTOS DESDE config.js  ═══════════════════
+// ═══════════════════════════════════════════════════════════
+
+(function() {
+  if (typeof CONFIG_FOTOS === 'undefined') return;
+  const C = CONFIG_FOTOS;
+
+  // ─── HERO BACKGROUND ───
+  if (C.hero && C.hero.archivo) {
+    const heroBg = document.querySelector('.hero-bg');
+    if (heroBg) heroBg.style.backgroundImage = "url('img/" + C.hero.archivo + "')";
+  }
+
+  // ─── HISTORIA ───
+  if (C.historia) {
+    const imgH = document.getElementById('img-historia');
+    if (imgH) {
+      imgH.src = 'img/' + C.historia.archivo;
+      imgH.alt = C.historia.descripcion || '';
+    }
+  }
+
+  // ─── CARRUSEL DEL SHOW ───
+  const track = document.getElementById('track1');
+  if (track && C.show && C.show.length) {
+    let html = '';
+    C.show.forEach(function(foto, i) {
+      html += '<div class="carousel-slide" onclick="openLightbox(' + i + ')">'
+            + '<img src="img/' + foto.archivo + '" alt="' + foto.descripcion + '">'
+            + '<div class="carousel-caption">' + foto.descripcion + '</div>'
+            + '</div>';
+    });
+    track.innerHTML = html;
+  }
+
+  // ─── SERVICIOS ───
+  const sGrid = document.getElementById('servicios-grid');
+  if (sGrid && C.servicios && C.servicios.length) {
+    let html = '';
+    C.servicios.forEach(function(serv, i) {
+      html += '<div class="menu-cat stagger-child" onclick="openLightboxGallery(' + i + ')">'
+            + '<img src="img/' + serv.archivo + '" alt="' + serv.titulo + ' - ' + serv.descripcion + '">'
+            + '<div class="menu-cat-overlay">'
+            + '<div class="menu-cat-icon">' + serv.icono + '</div>'
+            + '<div class="menu-cat-title">' + serv.titulo + '</div>'
+            + '<div class="menu-cat-desc">' + serv.descripcion + '</div>'
+            + '</div></div>';
+    });
+    sGrid.innerHTML = html;
+  }
+
+  // ─── GALERÍA ───
+  const gGrid = document.getElementById('galeria-grid');
+  if (gGrid && C.galeria && C.galeria.length) {
+    let html = '';
+    C.galeria.forEach(function(foto, i) {
+      html += '<div class="gallery-item stagger-child" onclick="openLightboxAll(' + i + ')">'
+            + '<img src="img/' + foto.archivo + '" alt="' + foto.descripcion + '">'
+            + '<div class="gallery-item-overlay"><div class="gallery-zoom">⊕</div></div>'
+            + '</div>';
+    });
+    gGrid.innerHTML = html;
+  }
+})();
+
 // ─── CARRUSEL ───
 let current = 0;
-const slidesCount = 8;
 const track = document.getElementById('track1');
+const slidesCount = track ? track.children.length : 0;
 const dotsContainer = document.getElementById('dots1');
 
 for(let i=0;i<slidesCount;i++) {
@@ -1946,7 +1912,6 @@ document.addEventListener('keydown', e => {
 
 // ─── SHOW GALLERY (from "Ver el show" btn) ───
 const showGalleryImgs = [];
-// collect all carousel images + gallery images for the show gallery
 document.querySelectorAll('#track1 .carousel-slide img').forEach(i => showGalleryImgs.push(i.src));
 function openShowGallery() {
   lbSet = showGalleryImgs; lbCurrent = 0;
