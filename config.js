@@ -114,7 +114,7 @@ const CONFIG_FOTOS = {
      Al hacer clic se abre el video en la red social.
   */
   videos: [
-    { url: "https://www.facebook.com/share/r/1Bp7XeoaXm/", titulo: "Show de pata flambeada en vivo" },
+    { url: "https://www.facebook.com/share/r/1Bp7XeoaXm/", titulo: "Show de pata flambeada en vivo", imagen: "show-2.jpg" },
   ],
 
 };
