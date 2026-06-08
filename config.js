@@ -112,9 +112,7 @@ const CONFIG_FOTOS = {
      - Facebook:  https://fb.watch/ABC123/
   */
   videos: [
-    // ← Pegá tus videos acá. Ejemplo:
-    // { url: "https://www.instagram.com/reel/CODIGO-DEL-VIDEO/", titulo: "Show de fuego en casamiento" },
-    // { url: "https://www.facebook.com/ricardo.r.morales.5/videos/123456/", titulo: "Evento corporativo en Trelew" },
+    { url: "https://www.facebook.com/share/r/1Bp7XeoaXm/", titulo: "Show de pata flambeada en vivo" },
   ],
 
 };
