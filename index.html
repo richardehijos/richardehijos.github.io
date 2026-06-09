@@ -1105,8 +1105,8 @@ footer {
 }
 .preloader-bg {
   position: absolute; inset: 0;
-  background-size: cover; background-position: center;
-  filter: brightness(0.2) blur(3px);
+  background-size: contain; background-position: center; background-repeat: no-repeat;
+  filter: brightness(0.25);
   z-index: -1;
 }
 .preloader.done { opacity: 0; visibility: hidden; pointer-events: none; }
