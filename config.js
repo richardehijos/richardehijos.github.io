@@ -47,13 +47,11 @@ const CONFIG_FOTOS = {
     { archivo: "show-3.jpg", descripcion: "La presentacion que todos esperan" },
     { archivo: "show-4.jpg", descripcion: "Pirotecnia y fuego para tu celebracion" },
     { archivo: "show-5.jpg", descripcion: "Cada evento, unico e irrepetible" },
-    { archivo: "show-6.jpg", descripcion: "El flambeado ideal para tu festejo" },
     { archivo: "show-7.jpg", descripcion: "Momentos que se guardan para siempre" },
     { archivo: "show-8.jpg", descripcion: "El fuego que da inicio a la celebracion" },
     { archivo: "show-9.png", descripcion: "Richard sirviendo la pata en un quince" },
     { archivo: "show-10.jpg", descripcion: "El show con toda la familia disfrutando" },
     { archivo: "show-11.jpg", descripcion: "La magia del flambeado en blanco y negro" },
-    { archivo: "show-12.jpg", descripcion: "Sirviendo la pata a la quinceañera" },
   ],
 
   /* ─── SERVICIOS (lo que llevamos al evento) ───
@@ -126,9 +124,9 @@ const CONFIG_FOTOS = {
      Podés agregar o sacar fotos libremente.
   */
   equipo: [
-    { archivo: "equipo-1.jpg", descripcion: "El equipo preparando empanadas en cocina" },
+    { archivo: "equipo-1.jpg", descripcion: "El equipo preparada con empanadas y creps primavera en cocina" },
     { archivo: "equipo-2.jpg", descripcion: "Todo el equipo listo para servir en el evento" },
-    { archivo: "equipo-3.jpg", descripcion: "Richard y su equipo con matambre arrollado" },
+    { archivo: "equipo-3.jpg", descripcion: "el equipo de Richard listos para servir el menu de entrada" },
     { archivo: "equipo-4.jpg", descripcion: "Mozo sirviendo camarones a los invitados" },
   ],
 
