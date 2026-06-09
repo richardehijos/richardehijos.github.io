@@ -1998,17 +1998,20 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   if (typeof CONFIG_FOTOS === 'undefined') return;
   const C = CONFIG_FOTOS;
 
+  // Helper: convierte nombre de archivo a versión WebP optimizada
+  function w(archivo) { return archivo.replace(/\.(jpg|jpeg|png)$/i, '.webp'); }
+
   // ─── HERO BACKGROUND ───
   if (C.hero && C.hero.archivo) {
     const heroBg = document.querySelector('.hero-bg');
-    if (heroBg) heroBg.style.backgroundImage = "url('img/" + C.hero.archivo + "')";
+    if (heroBg) heroBg.style.backgroundImage = "url('img/" + w(C.hero.archivo) + "')";
   }
 
   // ─── HISTORIA ───
   if (C.historia) {
     const imgH = document.getElementById('img-historia');
     if (imgH) {
-      imgH.src = 'img/' + C.historia.archivo;
+      imgH.src = 'img/' + w(C.historia.archivo);
       imgH.alt = C.historia.descripcion || '';
     }
   }
@@ -2019,7 +2022,7 @@ document.querySelectorAll('.nav-links a').forEach(a => {
     let html = '';
     C.show.forEach(function(foto, i) {
       html += '<div class="carousel-slide" onclick="openLightbox(' + i + ')">'
-            + '<img src="img/' + foto.archivo + '" alt="' + foto.descripcion + '">'
+            + '<img src="img/' + w(foto.archivo) + '" alt="' + foto.descripcion + '">'
             + '<div class="carousel-caption">' + foto.descripcion + '</div>'
             + '</div>';
     });
@@ -2032,7 +2035,7 @@ document.querySelectorAll('.nav-links a').forEach(a => {
     let html = '';
     C.servicios.forEach(function(serv, i) {
       html += '<div class="menu-cat stagger-child" onclick="openLightboxGallery(' + i + ')">'
-            + '<img src="img/' + serv.archivo + '" alt="' + serv.titulo + ' - ' + serv.descripcion + '">'
+            + '<img src="img/' + w(serv.archivo) + '" alt="' + serv.titulo + ' - ' + serv.descripcion + '">'
             + '<div class="menu-cat-overlay">'
             + '<div class="menu-cat-icon">' + serv.icono + '</div>'
             + '<div class="menu-cat-title">' + serv.titulo + '</div>'
@@ -2048,7 +2051,7 @@ document.querySelectorAll('.nav-links a').forEach(a => {
     let html = '';
     C.galeria.forEach(function(foto, i) {
       html += '<div class="gallery-item stagger-child" onclick="openLightboxAll(' + i + ')">'
-            + '<img src="img/' + foto.archivo + '" alt="' + foto.descripcion + '">'
+            + '<img src="img/' + w(foto.archivo) + '" alt="' + foto.descripcion + '">'
             + '<div class="gallery-item-overlay"><div class="gallery-zoom">⊕</div></div>'
             + '</div>';
     });
@@ -2058,7 +2061,7 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   // ─── PRELOAD BACKGROUND ───
   if (C.preload && C.preload.archivo) {
     const plBg = document.getElementById('preloader-bg');
-    if (plBg) plBg.style.backgroundImage = "url('img/" + C.preload.archivo + "')";
+    if (plBg) plBg.style.backgroundImage = "url('img/" + w(C.preload.archivo) + "')";
   }
 
   // ─── EQUIPO DE TRABAJO ───
@@ -2068,7 +2071,7 @@ document.querySelectorAll('.nav-links a').forEach(a => {
     C.equipo.forEach(function(foto, i) {
       html += '<div class="equipo-item stagger-child" onclick="openLightboxEquipo(' + i + ')">'
             + '<div class="equipo-item-img">'
-            + '<img src="img/' + foto.archivo + '" alt="' + foto.descripcion + '">'
+            + '<img src="img/' + w(foto.archivo) + '" alt="' + foto.descripcion + '">'
             + '</div>'
             + '<div class="equipo-item-overlay">'
             + '<div class="equipo-item-desc">' + foto.descripcion + '</div>'
@@ -2098,7 +2101,7 @@ document.querySelectorAll('.nav-links a').forEach(a => {
       var platformName = isFb ? 'Facebook' : 'Instagram';
       var ctaText = isFb ? 'Ver en Facebook ➜' : 'Ver en Instagram ➜';
       var thumbHtml = video.imagen
-        ? '<img src="img/' + video.imagen + '" alt="' + (video.titulo || '') + '">'
+        ? '<img src="img/' + w(video.imagen) + '" alt="' + (video.titulo || '') + '">'
         : '';
 
       html += '<a class="video-card stagger-child" href="' + url + '" target="_blank" rel="noopener">'
