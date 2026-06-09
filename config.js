@@ -124,9 +124,9 @@ const CONFIG_FOTOS = {
      Podés agregar o sacar fotos libremente.
   */
   equipo: [
-    { archivo: "equipo-1.jpg", descripcion: "El equipo preparada con empanadas y creps primavera en cocina" },
+    { archivo: "equipo-1.jpg", descripcion: "El equipo preparado con empanadas y creps primavera en cocina" },
     { archivo: "equipo-2.jpg", descripcion: "Todo el equipo listo para servir en el evento" },
-    { archivo: "equipo-3.jpg", descripcion: "el equipo de Richard listos para servir el menu de entrada" },
+    { archivo: "equipo-3.jpg", descripcion: "El equipo de Richard listos para servir el menu de entrada" },
     { archivo: "equipo-4.jpg", descripcion: "Mozo sirviendo camarones a los invitados" },
   ],
 
