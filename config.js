@@ -25,10 +25,16 @@ const CONFIG_FOTOS = {
     // Esta es la foto grande de fondo al entrar a la web
   },
 
-  /* ─── HISTORIA (foto de Ricardo) ─── */
+  /* ─── FONDO DEL PRELOAD (pantalla de carga) ─── */
+  preload: {
+    archivo: "preload-1.jpg",
+    // Esta foto se muestra de fondo mientras carga la web
+  },
+
+  /* ─── HISTORIA / PERFIL (foto de Ricardo) ─── */
   historia: {
-    archivo: "historia-0.png",
-    descripcion: "Ricardo Morales - Chef y fundador de Richard e Hijos Pata Flambeada"
+    archivo: "perfil-1.jpg",
+    descripcion: "Ricardo Morales - Chef y fundador de Richard e Hijos, sirviendo la pata flambeada con orgullo argentino"
   },
 
   /* ─── EL SHOW (carrusel principal) ───
@@ -36,14 +42,18 @@ const CONFIG_FOTOS = {
      El carrusel se adapta solo.
   */
   show: [
-    { archivo: "show-1.jpg", descripcion: "El show en su máxima expresión 🔥" },
-    { archivo: "show-2.jpg", descripcion: "Fuego, sabor y pasión en cada evento" },
-    { archivo: "show-3.jpg", descripcion: "La presentación que todos esperan" },
-    { archivo: "show-4.jpg", descripcion: "Pirotecnia y fuego para tu celebración" },
-    { archivo: "show-5.jpg", descripcion: "Cada evento, único e irrepetible" },
+    { archivo: "show-1.jpg", descripcion: "El show en su maxima expresion" },
+    { archivo: "show-2.jpg", descripcion: "Fuego, sabor y pasion en cada evento" },
+    { archivo: "show-3.jpg", descripcion: "La presentacion que todos esperan" },
+    { archivo: "show-4.jpg", descripcion: "Pirotecnia y fuego para tu celebracion" },
+    { archivo: "show-5.jpg", descripcion: "Cada evento, unico e irrepetible" },
     { archivo: "show-6.jpg", descripcion: "El flambeado ideal para tu festejo" },
     { archivo: "show-7.jpg", descripcion: "Momentos que se guardan para siempre" },
-    { archivo: "show-8.jpg", descripcion: "El fuego que da inicio a la celebración" },
+    { archivo: "show-8.jpg", descripcion: "El fuego que da inicio a la celebracion" },
+    { archivo: "show-9.png", descripcion: "Richard sirviendo la pata en un quince" },
+    { archivo: "show-10.jpg", descripcion: "El show con toda la familia disfrutando" },
+    { archivo: "show-11.jpg", descripcion: "La magia del flambeado en blanco y negro" },
+    { archivo: "show-12.jpg", descripcion: "Sirviendo la pata a la quinceañera" },
   ],
 
   /* ─── SERVICIOS (lo que llevamos al evento) ───
@@ -55,7 +65,7 @@ const CONFIG_FOTOS = {
       archivo: "galeria-9.jpg",
       icono: "🥗",
       titulo: "Ensaladas Frescas",
-      descripcion: "Lechuga con tomate, zanahoria rallada con choclo y más variedades. Preparadas el mismo día para máxima frescura."
+      descripcion: "Lechuga con tomate, zanahoria rallada con choclo y mas variedades. Preparadas el mismo dia para maxima frescura."
     },
     {
       archivo: "galeria-10.jpg",
@@ -67,7 +77,7 @@ const CONFIG_FOTOS = {
       archivo: "galeria-19.jpg",
       icono: "🦐",
       titulo: "Entradas Gourmet",
-      descripcion: "Camarones en copa con limón, creps, y opciones a elección del cliente. Presentación impecable para sorprender a tus invitados."
+      descripcion: "Camarones en copa con limon, creps, y opciones a eleccion del cliente. Presentacion impecable para sorprender a tus invitados."
     },
     {
       archivo: "galeria-12.jpg",
@@ -76,16 +86,22 @@ const CONFIG_FOTOS = {
       descripcion: "De pollo o de carne, relleno y cocinado con esmero. Servido en platos individuales para cada invitado."
     },
     {
+      archivo: "galeria-23.jpg",
+      icono: "🧀",
+      titulo: "Picadas Gourmet",
+      descripcion: "Tablas completas con fiambres, quesos, bruschetas y mas. Presentacion artesanal para el inicio perfecto de tu evento."
+    },
+    {
       archivo: "galeria-13.jpg",
       icono: "🍞",
       titulo: "Mesa Completa",
-      descripcion: "Panes, salsas, aderezos, vajilla y cristalería. Todo montado y presentado para que tu evento luzca de primera."
+      descripcion: "Panes, salsas, aderezos, vajilla y cristaleria. Todo montado y presentado para que tu evento luzca de primera."
     },
     {
-      archivo: "galeria-20.jpg",
+      archivo: "equipo-4.jpg",
       icono: "🍽️",
       titulo: "Servicio de Mozo",
-      descripcion: "Personal de servicio vestido de negro, profesional y atento. La atención a los invitados que se merece tu evento."
+      descripcion: "Personal de servicio vestido de negro, profesional y atento. La atencion a los invitados que se merece tu evento."
     },
   ],
 
@@ -93,12 +109,27 @@ const CONFIG_FOTOS = {
      Podés agregar o sacar fotos. Solo agregá o borrá líneas.
   */
   galeria: [
-    { archivo: "galeria-15.jpg", descripcion: "Show de pata flambeada con fuego y show" },
-    { archivo: "galeria-16.jpg", descripcion: "Ricardo Morales flambeando pata evento" },
+    { archivo: "galeria-15.jpg", descripcion: "Show de pata flambeada con fuego y pirotecnia" },
+    { archivo: "galeria-16.jpg", descripcion: "Ricardo Morales flambeando la pata en evento" },
     { archivo: "galeria-17.jpg", descripcion: "Mesa completa de servicio con ensaladas y panes" },
     { archivo: "galeria-18.jpg", descripcion: "Ensalada de tomate con cebolla en fuente" },
-    { archivo: "galeria-19.jpg", descripcion: "Camarones gourmet en copas de presentación" },
-    { archivo: "galeria-20.jpg", descripcion: "Mozo sirviendo camarones a invitados del evento" },
+    { archivo: "galeria-19.jpg", descripcion: "Camarones gourmet en copas de presentacion" },
+    { archivo: "galeria-21.jpg", descripcion: "Pata flambeada con bengalas y mesa de ensaladas" },
+    { archivo: "galeria-22.jpg", descripcion: "Picada gourmet completa con fiambres y quesos" },
+    { archivo: "galeria-23.jpg", descripcion: "Mesa de picadas con bruschetas y tabla artesanal" },
+    { archivo: "galeria-24.jpg", descripcion: "Detalle de la picada con variedad de fiambres" },
+    { archivo: "galeria-25.jpg", descripcion: "Cocina en plena accion emplatando para el evento" },
+  ],
+
+  /* ─── EQUIPO DE TRABAJO ───
+     Fotos del equipo que hace posible cada evento.
+     Podés agregar o sacar fotos libremente.
+  */
+  equipo: [
+    { archivo: "equipo-1.jpg", descripcion: "El equipo preparando empanadas en cocina" },
+    { archivo: "equipo-2.jpg", descripcion: "Todo el equipo listo para servir en el evento" },
+    { archivo: "equipo-3.jpg", descripcion: "Richard y su equipo con matambre arrollado" },
+    { archivo: "equipo-4.jpg", descripcion: "Mozo sirviendo camarones a los invitados" },
   ],
 
   /* ─── VIDEOS DE REDES SOCIALES ───
