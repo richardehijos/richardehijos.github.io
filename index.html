@@ -1227,7 +1227,7 @@ footer {
   .footer-inner { flex-direction: column; text-align: center; gap: 2rem; }
   /* Evitar overflow horizontal en mobile */
   .container, section, .historia-grid, .show-main, .contacto-grid,
-  .galeria-grid, .equipo-grid, .menu-categories { max-width: 100%; overflow: hidden; }
+  .gallery-grid, .galeria-grid, .equipo-grid, .menu-categories { max-width: 100%; overflow: hidden; }
   /* Cursor custom desactivado en mobile */
   body { cursor: auto; }
   .cursor-dot, .cursor-ring { display: none !important; }
@@ -1255,7 +1255,7 @@ footer {
   /* Carousel mobile */
   .carousel-slide { height: 280px; }
   /* Galería mobile */
-  .galeria-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.5rem !important; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.5rem !important; }
   .gallery-item { height: 140px; }
   /* Equipo mobile */
   .equipo-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.5rem !important; }
@@ -1266,15 +1266,19 @@ footer {
   /* Contacto mobile */
   .contacto-grid { gap: 2rem; }
   /* CTA mobile */
-  .cta-box { padding: 3rem 1.5rem; }
+  .cta-box { padding: 2.5rem 1rem; max-width: 100%; box-sizing: border-box; overflow: hidden; }
   .cta-box .section-title { font-size: 1.6rem; }
+  .cta-box p { font-size: 0.82rem; padding: 0 0.3rem; word-wrap: break-word; }
+  .btn-wa { padding: 1rem 1.5rem; font-size: 0.75rem; max-width: 100%; box-sizing: border-box; }
+  .social-links { flex-wrap: wrap; gap: 0.6rem; }
+  .social-link { font-size: 0.7rem; padding: 0.7rem 1rem; flex: 1; min-width: 0; text-align: center; box-sizing: border-box; justify-content: center; }
 }
 @media (max-width: 380px) {
   .hero-title { font-size: 2.4rem; }
   .hero-stat-item { padding: 0.5rem 0.3rem; }
   .hero-stat-num { font-size: 1rem; }
   .hero-stat-label { font-size: 0.45rem; }
-  .galeria-grid { grid-template-columns: 1fr !important; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 3px !important; }
 }
 
 /* ═══ PRELOADER ═══ */
@@ -2254,6 +2258,52 @@ img { user-select: none; -webkit-user-drag: none; }
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- PROVEEDORES OFICIALES (DEMO LOCAL) -->
+<section id="proveedores" style="padding: 5rem 0; background: linear-gradient(180deg, var(--negro) 0%, #0d0d0d 50%, var(--negro) 100%);">
+  <div class="container" style="text-align: center;">
+    <div class="section-eyebrow" style="margin-bottom: 1rem;">✦ NUESTROS PROVEEDORES</div>
+    <h2 class="section-title">Trabajamos con <em>los mejores</em></h2>
+    <div class="section-line" style="margin: 0 auto 1rem;"></div>
+    <p style="max-width: 520px; margin: 0 auto 3rem; font-size: 0.85rem; line-height: 1.8; color: rgba(212,197,169,0.7); letter-spacing: 0.03em;">
+      Cada evento merece ingredientes de primera calidad. Por eso elegimos proveedores que comparten nuestra pasión por la excelencia.
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 900px; margin: 0 auto;">
+      <!-- Carnicería -->
+      <div style="background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.15); border-radius: 12px; padding: 2rem 1.5rem; text-align: center; transition: all 0.4s;">
+        <div style="width: 70px; height: 70px; margin: 0 auto 1.2rem; border-radius: 50%; background: rgba(201,168,76,0.08); display: flex; align-items: center; justify-content: center; font-size: 2rem;">🥩</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--dorado); font-weight: 700; margin-bottom: 0.3rem;">Su Carnicería</div>
+        <div style="font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(212,197,169,0.5);">Carnicería</div>
+        <div style="width: 30px; height: 1px; background: rgba(201,168,76,0.3); margin: 0.8rem auto 0;"></div>
+        <div style="font-size: 0.7rem; color: rgba(212,197,169,0.4); margin-top: 0.6rem; font-style: italic;">Proveedor oficial</div>
+      </div>
+      <!-- Distribuidora -->
+      <div style="background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.15); border-radius: 12px; padding: 2rem 1.5rem; text-align: center; transition: all 0.4s;">
+        <div style="width: 70px; height: 70px; margin: 0 auto 1.2rem; border-radius: 50%; background: rgba(201,168,76,0.08); display: flex; align-items: center; justify-content: center; font-size: 2rem;">🍷</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--dorado); font-weight: 700; margin-bottom: 0.3rem;">Su Distribuidora</div>
+        <div style="font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(212,197,169,0.5);">Bebidas</div>
+        <div style="width: 30px; height: 1px; background: rgba(201,168,76,0.3); margin: 0.8rem auto 0;"></div>
+        <div style="font-size: 0.7rem; color: rgba(212,197,169,0.4); margin-top: 0.6rem; font-style: italic;">Proveedor oficial</div>
+      </div>
+      <!-- Fiambrería -->
+      <div style="background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.15); border-radius: 12px; padding: 2rem 1.5rem; text-align: center; transition: all 0.4s;">
+        <div style="width: 70px; height: 70px; margin: 0 auto 1.2rem; border-radius: 50%; background: rgba(201,168,76,0.08); display: flex; align-items: center; justify-content: center; font-size: 2rem;">🧀</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--dorado); font-weight: 700; margin-bottom: 0.3rem;">Su Fiambrería</div>
+        <div style="font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(212,197,169,0.5);">Fiambres y Quesos</div>
+        <div style="width: 30px; height: 1px; background: rgba(201,168,76,0.3); margin: 0.8rem auto 0;"></div>
+        <div style="font-size: 0.7rem; color: rgba(212,197,169,0.4); margin-top: 0.6rem; font-style: italic;">Proveedor oficial</div>
+      </div>
+      <!-- Panadería -->
+      <div style="background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.15); border-radius: 12px; padding: 2rem 1.5rem; text-align: center; transition: all 0.4s;">
+        <div style="width: 70px; height: 70px; margin: 0 auto 1.2rem; border-radius: 50%; background: rgba(201,168,76,0.08); display: flex; align-items: center; justify-content: center; font-size: 2rem;">🍞</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--dorado); font-weight: 700; margin-bottom: 0.3rem;">Su Panadería</div>
+        <div style="font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(212,197,169,0.5);">Panadería</div>
+        <div style="width: 30px; height: 1px; background: rgba(201,168,76,0.3); margin: 0.8rem auto 0;"></div>
+        <div style="font-size: 0.7rem; color: rgba(212,197,169,0.4); margin-top: 0.6rem; font-style: italic;">Proveedor oficial</div>
+      </div>
     </div>
   </div>
 </section>
